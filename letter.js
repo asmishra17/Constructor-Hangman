@@ -22,6 +22,7 @@ function Letter (character, guessed) {
     }
 }
 
+module.exports = Letter;
 //var a = new Letter ("a", false);
 //a.checkCharacter(userInput);
 
