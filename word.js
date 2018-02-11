@@ -1,4 +1,5 @@
 var Letter = require("./letter.js");
+var dashArray = [];
 
 function Word () {
     // runs Letter constructor on each letter in word

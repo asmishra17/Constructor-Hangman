@@ -10,12 +10,8 @@ function Letter (character, guessed) {
     };
     this.checkCharacter = function (userInput) {
         if (userInput === this.character || this.guessed === true) {
-            console.log(this.character);
-            // return this.character;
             this.guessed = true;
         } else {
-            console.log("_");
-            // return "_";
             this.guessed = false;
         }
     }
