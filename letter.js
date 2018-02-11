@@ -18,7 +18,6 @@ function Letter (character, guessed) {
         }
     }
 }
-
 module.exports = Letter;
 
 

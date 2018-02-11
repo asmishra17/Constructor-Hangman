@@ -1,11 +1,11 @@
-var Word = require("./word.js");
 // global variables
+var Word = require("./word.js");
 
 // user input
 var userInput = process.argv[2];
 
 // array of words
-var wordsArray = ["kanyewest", "yeezus", "graduation", "lateregistration", "watchthethrone", "collegedropout", "lifeofpablo"];
+var wordsArray = ["cheese", "danish", "potatoes", "cornbread", "burrito", "ramen", "sushi", "cupcake"];
 
 // choosing from array
 var chosenWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
@@ -19,10 +19,6 @@ var letterArray = [];
 // array to show dashes and correctly guessed letters
 var dashArray = [];
 
-var test = new Word();
-console.log(test);
-test.returnLetters(wordSplit, letterArray);
-console.log(letterArray);
 
 
 
