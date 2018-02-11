@@ -6,10 +6,10 @@ function Letter (character, guessed) {
     this.guessed = guessed; // boolean
     this.returnCharacter = function () {
         if (guessed) {
-            console.log(character);
+            return character;
         } else {
-            console.log("_");
-        }
+            return "_";
+        } // else if to deal with spaces
     };
     this.checkCharacter = function (userInput) {
         if (userInput === character) {
