@@ -25,8 +25,7 @@ function initializeGame () {
     firstWord.returnWord(letterArray, dashArray)
 };
 
-initializeGame();
-startGame();
+var guessesLeft = 10;
 
 function startGame () {
     inquirer 
@@ -38,10 +37,24 @@ function startGame () {
             }
         ])
         .then(function(answer) {
+            guessesLeft--;
+
             firstWord.checkWord(letterArray, answer.userInput);
+            console.log(letterArray);
+            firstWord.returnWord(letterArray, dashArray);
+            console.log(" ");
+            console.log(`${guessesLeft} guesses remaining!`)
+            
+            if (guessesLeft > 0) {
+                startGame();
+            } else {
+                // start new game
+            }
         });
 ;}
 
+initializeGame();
+startGame();
 
 
 

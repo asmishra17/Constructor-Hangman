@@ -8,6 +8,8 @@ function Word () {
         }
     };
     this.returnWord = function (letterArray, dashArray) { 
+        // clear dashArray first
+        dashArray = [];
         // call the returnCharacter function on each Letter object
         for (j = 0; j < letterArray.length; j++) {
             dashArray.push(letterArray[j].returnCharacter());
