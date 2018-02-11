@@ -1,8 +1,6 @@
 // global variables
 var Word = require("./word.js");
-
-// user input
-var userInput = process.argv[2];
+var inquirer = require("inquirer");
 
 // array of words
 var wordsArray = ["cheese", "danish", "potatoes", "cornbread", "burrito", "ramen", "sushi", "cupcake"];
@@ -19,7 +17,30 @@ var letterArray = [];
 // array to show dashes and correctly guessed letters
 var dashArray = [];
 
+var firstWord = new Word();
 
+function initializeGame () {
+    console.log("Hangman Game");
+    firstWord.returnLetters(wordSplit, letterArray);
+    firstWord.returnWord(letterArray, dashArray)
+};
+
+initializeGame();
+startGame();
+
+function startGame () {
+    inquirer 
+        .prompt ([
+            {
+                type: "input",
+                message: "Guess a letter:",
+                name: "userInput"
+            }
+        ])
+        .then(function(answer) {
+            firstWord.checkWord(letterArray, answer.userInput);
+        });
+;}
 
 
 

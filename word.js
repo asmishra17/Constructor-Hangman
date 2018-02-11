@@ -13,7 +13,9 @@ function Word () {
             dashArray.push(letterArray[j].returnCharacter());
         }
         // concatenate everything together
-        console.log(dashArray.join(" "));   
+        console.log(" "); 
+        console.log(`Current Word: ${dashArray.join(" ")}`);
+        console.log(" ");   
     };
     this.checkWord = function (letterArray, userInput) {
         // calls checkCharacter on each letter object
