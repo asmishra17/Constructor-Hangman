@@ -1,6 +1,3 @@
-var userInput = process.argv[2];
-// maybe try and make this more specific
-
 function Letter (character, guessed) {
     this.character = character; // string
     this.guessed = guessed; // boolean
@@ -23,7 +20,6 @@ function Letter (character, guessed) {
 }
 
 module.exports = Letter;
-//var a = new Letter ("a", false);
-//a.checkCharacter(userInput);
+
 
 
