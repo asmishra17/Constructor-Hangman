@@ -5,19 +5,19 @@ function Letter (character, guessed) {
     this.character = character; // string
     this.guessed = guessed; // boolean
     this.returnCharacter = function () {
-        if (guessed) {
+        if (this.guessed === true) {
             return character;
         } else {
             return "_";
         } // else if to deal with spaces
     };
     this.checkCharacter = function (userInput) {
-        if (userInput === character) {
-            console.log(character);
-            guessed = true;
+        if (userInput === this.character) {
+            console.log(this.character);
+            this.guessed = true;
         } else {
-            console.log("_")
-            guessed = false;
+            console.log("_");
+            this.guessed = false;
         }
     }
 }
