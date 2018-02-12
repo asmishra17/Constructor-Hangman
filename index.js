@@ -43,27 +43,31 @@ function startGame () {
         .then(function(answer) {
             guessesLeft--;
             firstWord.checkWord(letterArray, answer.userInput);
+            dashArray = []; 
             firstWord.returnWord(letterArray, dashArray);
+
+            console.log(answer.userInput);
+            console.log(dashArray); 
+            console.log(wordSplit);
 
             console.log(" ");
             console.log(`${guessesLeft} guesses remaining!`)
-            console.log(wordSplit);
 
-            if (dashArray === wordSplit) {
-                console.log("You win! Next word:")
+            if (dashArray.toString() === wordSplit.toString()) {
+                console.log("winner winner chicken dinner");
             }
 
             if (guessesLeft > 0) {
                 startGame();
             } else {
                 console.log("You lose :( Next word:")
+                // reset function
             }
         });
 ;}
 
 initializeGame();
 startGame();
-
 
 
 
