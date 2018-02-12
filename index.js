@@ -1,6 +1,6 @@
 // still need to do: 
-// decrease lives correctly
-// tell computer when user has won
+// decrease lives correctly (done!)
+// tell computer when user has won (done!)
 // restart function
 
 
@@ -22,7 +22,7 @@ var letterArray = [];
 var dashArray = []; 
 
 var firstWord = new Word();
-var guessesLeft = 10;
+var guessesLeft = 10; 
 
 function initializeGame () {
     console.log("Hangman Game");
@@ -41,12 +41,30 @@ function startGame () {
             }
         ])
         .then(function(answer) {
-            guessesLeft--;
             firstWord.checkWord(letterArray, answer.userInput);
+
+
+            var letterInWord = false;
+
+            for (var i = 0; i < wordSplit.length; i++) {
+                if (answer.userInput === wordSplit[i]) {
+                      letterInWord = true;
+                }
+            }
+
+            if (letterInWord) {
+                console.log("");
+                console.log("Correct!")
+            } else {
+                guessesLeft--;
+                console.log("");
+                console.log("Wrong!")
+            }
+
             dashArray = []; 
             firstWord.returnWord(letterArray, dashArray);
 
-            console.log(answer.userInput);
+
             console.log(dashArray); 
             console.log(wordSplit);
 
@@ -54,13 +72,14 @@ function startGame () {
             console.log(`${guessesLeft} guesses remaining!`)
 
             if (dashArray.toString() === wordSplit.toString()) {
-                console.log("winner winner chicken dinner");
+                console.log("Winner Winner Chicken Dinner!");
+                guessesLeft = 0;
             }
 
             if (guessesLeft > 0) {
                 startGame();
             } else {
-                console.log("You lose :( Next word:")
+                console.log("Next word: ")
                 // reset function
             }
         });

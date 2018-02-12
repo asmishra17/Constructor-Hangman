@@ -2,7 +2,7 @@ function Letter (character, guessed) {
     this.character = character; // string
     this.guessed = guessed; // boolean
     this.returnCharacter = function () {
-        if (this.guessed === true) {
+        if (this.guessed) {
             return this.character;
         } else {
             return "_";
