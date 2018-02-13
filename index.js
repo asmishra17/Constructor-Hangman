@@ -1,26 +1,22 @@
-// still need to do: 
-// decrease lives correctly (done!)
-// tell computer when user has won (done!)
-// restart function
-
-
-// global variables
+//global variables
 var Word = require("./word.js");
 var inquirer = require("inquirer");
 
-// array of words
-var wordsArray = ["cheese", "danish", "potatoes", "cornbread", "burrito", "ramen", "sushi", "cupcake"];
+//array of words
+var wordsArray = ["cheese", "danish", "potatoes", "cornbread", "burrito", "ramen", "sushi", "cupcake", "cookie", "steak", "chorizo"];
 
-// choosing from array
+//choosing from array
 var chosenWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
 
-// splitting word string into array
+//splitting word string into array
 var wordSplit = chosenWord.split("");
 
-// array for letter objects
+//array for letter objects
 var letterArray = [];
+//array for dashes
 var dashArray = []; 
 
+//using the Word constructor
 var firstWord = new Word();
 var guessesLeft = 10; 
 
@@ -31,21 +27,6 @@ function initializeGame () {
 
     firstWord.returnLetters(wordSplit, letterArray);
     firstWord.returnWord(letterArray, dashArray)
-};
-
-function continueGame () {
-    guessesLeft = 10;
-    var newArray = []; 
-    var newLetter = [];
-    var test = new Word();
-
-    chosenWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
-    wordSplit = chosenWord.split("");
-
-    test.returnLetters(wordSplit, newLetter);
-    test.returnWord(newLetter, newArray)
-
-
 };
 
 function startGame () {
@@ -60,7 +41,6 @@ function startGame () {
         .then(function(answer) {
             firstWord.checkWord(letterArray, answer.userInput);
 
-
             var letterInWord = false;
 
             for (var i = 0; i < wordSplit.length; i++) {
@@ -70,7 +50,7 @@ function startGame () {
             }
 
             if (letterInWord) {
-                console.log(""); // these blanks are just here for spacing. I didn't like everything smushed together!
+                console.log(""); //these blanks are just here for spacing. I didn't like everything smushed together!
                 console.log("Correct!")
             } else {
                 guessesLeft--;
@@ -78,14 +58,10 @@ function startGame () {
                 console.log("Incorrect!")
             }
 
+            //clearing the array
             dashArray = []; 
             firstWord.returnWord(letterArray, dashArray);
 
-
-            console.log(dashArray); 
-            console.log(wordSplit);
-
-            console.log(" ");
             console.log(`${guessesLeft} guesses remaining`)
             console.log("");
 
@@ -98,6 +74,7 @@ function startGame () {
             if (guessesLeft > 0) {
                 startGame();
             } else {
+                //reset "function"
                 console.log("Next word: ")
                 console.log("");
                 guessesLeft = 10;
@@ -105,8 +82,6 @@ function startGame () {
                 letterArray = [];
                 initializeGame();
                 startGame();
-                // reset function
-                //continueGame();
             }
         });
 };
