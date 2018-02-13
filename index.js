@@ -26,9 +26,26 @@ var guessesLeft = 10;
 
 function initializeGame () {
     console.log("Hangman Game");
+    chosenWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+    wordSplit = chosenWord.split("");
 
     firstWord.returnLetters(wordSplit, letterArray);
     firstWord.returnWord(letterArray, dashArray)
+};
+
+function continueGame () {
+    guessesLeft = 10;
+    var newArray = []; 
+    var newLetter = [];
+    var test = new Word();
+
+    chosenWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+    wordSplit = chosenWord.split("");
+
+    test.returnLetters(wordSplit, newLetter);
+    test.returnWord(newLetter, newArray)
+
+
 };
 
 function startGame () {
@@ -53,12 +70,12 @@ function startGame () {
             }
 
             if (letterInWord) {
-                console.log("");
+                console.log(""); // these blanks are just here for spacing. I didn't like everything smushed together!
                 console.log("Correct!")
             } else {
                 guessesLeft--;
                 console.log("");
-                console.log("Wrong!")
+                console.log("Incorrect!")
             }
 
             dashArray = []; 
@@ -69,10 +86,12 @@ function startGame () {
             console.log(wordSplit);
 
             console.log(" ");
-            console.log(`${guessesLeft} guesses remaining!`)
+            console.log(`${guessesLeft} guesses remaining`)
+            console.log("");
 
             if (dashArray.toString() === wordSplit.toString()) {
                 console.log("Winner Winner Chicken Dinner!");
+                console.log("");
                 guessesLeft = 0;
             }
 
@@ -80,10 +99,17 @@ function startGame () {
                 startGame();
             } else {
                 console.log("Next word: ")
+                console.log("");
+                guessesLeft = 10;
+                dashArray = [];
+                letterArray = [];
+                initializeGame();
+                startGame();
                 // reset function
+                //continueGame();
             }
         });
-;}
+};
 
 initializeGame();
 startGame();
