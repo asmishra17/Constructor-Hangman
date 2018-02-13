@@ -20,8 +20,10 @@ var dashArray = [];
 var firstWord = new Word();
 var guessesLeft = 10; 
 
+console.log("");
+console.log("Hangman Game (Food Theme)");
+
 function initializeGame () {
-    console.log("Hangman Game");
     chosenWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
     wordSplit = chosenWord.split("");
 
@@ -76,7 +78,7 @@ function startGame () {
             } else {
                 //reset "function"
                 console.log("Next word: ")
-                console.log("");
+
                 guessesLeft = 10;
                 dashArray = [];
                 letterArray = [];
